@@ -3,11 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #App_name {
     font-family: Impact, Charcoal, sans-serif;
-    font-size: 64px;
-    color: #000000;
+    font-size: 75px;
+    color: #ffffff;
     border: 3px inset #ffffff;
     border-radius: 8px;
-    background-color: #85c1e9;
+    
+    
+    
+    background-image:url("http://hd-wall-papers.com/images/wallpapers/video-game-background/video-game-background-4.jpg");
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size: cover;
 }
 .lists_top {
     padding-top: 15pt;
@@ -31,6 +37,17 @@
 }
 body {
     background: #062362;
+    
+}
+
+#articles_list {
+    float: right; 
+    text-align: right;
+}
+
+#reviews_list{
+     float: left; 
+    text-align: left;
 }
 
 
