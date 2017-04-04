@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-  resources :accounts do 
+  resources :accounts do
     resources :reviews
     resources :articles
   end
