@@ -1,1 +1,15 @@
-<h3>TEST</h3>
+<%= form_for @account do |f| %>
+<h3>Choose a username and password</h3>
+
+<p>
+    <%= f.label :userName %><br>
+    <%= f.text_field :userName %>
+</p>
+<p>
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+</p>
+<p>
+    <%= f.submit %>
+</p>
+<% end %>
