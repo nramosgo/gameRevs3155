@@ -8,20 +8,27 @@
     border: 3px inset #ffffff;
     border-radius: 8px;
     
-    background-image:url("http://hd-wall-papers.com/images/wallpapers/video-game-background/video-game-background-4.jpg");
+    background-image: url("testimg.jpg");
     background-repeat:no-repeat;
     background-position:center;
     background-size: cover;
+    
 }
 .lists_top {
     padding-top: 15pt;
 }
+
 .buttons{
-    border-radius: 2px;
+    border: none;
+    //border-radius: 1px;
     background-color: #CACFD2;
     width: 10%;
     height: 50px;
+    cursor: pointer;
+    font-family:Verdana, Geneva, sans-serif;
+    margin: 5px;
 }
+
 .mid_header {
     font-family: Impact, Charcoal, sans-serif;
     font-size: 38px;

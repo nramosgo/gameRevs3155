@@ -9,7 +9,7 @@
 	</title>
 
 	<div style >	
-	<%= link_to "<button>Login</button>".html_safe, new_account_path, :id=>"", :class=>"buttons" %>
+	<%= link_to "<button>Login/Sign-Up</button>".html_safe, new_account_path, :id=>"", :class=>"buttons" %>
 	</div>
 	
 	<!-- Wrapper for the headers -->
@@ -32,20 +32,28 @@
 		type="button">All Articles
 		</button>
 		
-		<button class="buttons" style = "float:left" 
-		type="button">New
-		</button>
 		
-		<button class="buttons" style = "float:right" 
+		
+		<button class="buttons" style = "float:left" 
 		type="button">New
 		</button>
 		
 		<button class="buttons" style = "float:right" 
 		type="button">All Reviews
 		</button>
+		
+		<button class="buttons" style = "float:right" 
+		type="button">New
+		</button>
+		
+		
+		
+		
+		
+		
 	</div>
 	
-	<!--- Wrapper for the list of articles and reivews -->
+	<!--- Wrapper for the list of articles and reviews -->
 	<div class="lists_top" style = "clear:both">
 		<p1 class="list_trending" id = "articles_list"  >
 		"the list of articles"
