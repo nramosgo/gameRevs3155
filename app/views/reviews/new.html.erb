@@ -1,1 +1,48 @@
 <h4>NEW REVIEW TEST</h4>
+
+<%= form_for @review do |f| %>
+<p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+</p>
+ 
+<p>
+    <%= f.label :mainText %><br>
+    <%= f.text_area :mainText %>
+</p>
+
+<p>
+    <%= f.label :rating %><br>
+    <%= f.text_field :rating %>
+</p>
+
+<p>
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+</p>
+
+<p>
+    <%= f.label :image %><br>
+    <%= f.text_field :image %>
+</p>
+
+<p>
+    <%= f.label :tag1 %><br>
+    <%= f.text_field :tag1 %>
+</p>
+
+<p>
+    <%= f.label :tag2 %><br>
+    <%= f.text_field :tag2 %>
+</p>
+
+<p>
+    <%= f.label :tag3 %><br>
+    <%= f.text_field :tag3 %>
+</p>
+ 
+<p>
+    <%= f.submit %>
+</p>
+
+<% end %>
