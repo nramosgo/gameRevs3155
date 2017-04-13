@@ -1,6 +1,6 @@
-<h4>NEW REVIEW TEST</h4>
+<h4>NEW REVIEW</h4>
 
-<%= form_for @review do |f| %>
+<%= form_for @review, url: new_account_review_path do |f| %>
 <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
