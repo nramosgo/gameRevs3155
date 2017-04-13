@@ -5,19 +5,22 @@ class ReviewsController < ApplicationController
     end
     
     def create
-        @review = @account.reviews.create(review_params)
+       @review = Review.create(review_params)
        
         if @review.save
-            redirect_to @review
+             redirect_to @review
         else
-            render 'new'
+             render 'new'
         end
+        
     end
     
-
+    def show
+        @review = Review.find(params[:id])
+    end
 end
 
 private
     def review_params
-        params.required(:review).permit(:title, :mainText, :rating, :date, :image, :tag1, :tag2, :tag3)
+        params.required(:review).permit(:title, :mainText, :rating, :image, :tag1, :tag2, :tag3)
     end
