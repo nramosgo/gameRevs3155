@@ -1,6 +1,4 @@
-<h4>NEW REVIEW TEST</h4>
-
-<%= form_for @review do |f| %>
+<%= form_for @article do |f| %>
 <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -9,11 +7,6 @@
 <p>
     <%= f.label :mainText %><br>
     <%= f.text_area :mainText %>
-</p>
-
-<p>
-    <%= f.label :rating %><br>
-    <%= f.text_field :rating %>
 </p>
 
 <p>
