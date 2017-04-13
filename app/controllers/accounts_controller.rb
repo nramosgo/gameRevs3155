@@ -14,6 +14,10 @@ class AccountsController < ApplicationController
         end
     
     end
+    
+    def show
+        @account = Account.find(params[:id])
+    end
 end
 
 private
