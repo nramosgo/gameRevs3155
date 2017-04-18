@@ -6,11 +6,11 @@ class ReviewsController < ApplicationController
     
     def create
        @account = Account.find(params[:account_id])
-        #just for refrences as what to do @article = Article.find(params[:article_id])
+        
         @review = @account.reviews.new(review_params)
-        #just for reference as what to do @comment = @article.comments.create(comment_params)
+        
         if @review.save
-             redirect_to account_path(@review)
+             redirect_to @account.reviews
              
              #change to show page
         else
