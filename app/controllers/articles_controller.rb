@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
         #just for reference as what to do @comment = @article.comments.create(comment_params)
        
         if @article.save
-            redirect_to @account #  need to change this to go to show page
+            redirect_to account_article_path(@account.id, @account.articles, @article.id) #  need to change this to go to show page
             
         else
             render 'new'
@@ -18,7 +18,8 @@ class ArticlesController < ApplicationController
     end
     
     def show
-        @article = Article.find(params[:id])
+        @account = Account.find(params[:account_id])
+        @article = Article.where(account_id:'@account.id')
     end
 end
 private
