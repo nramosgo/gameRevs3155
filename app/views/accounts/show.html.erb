@@ -11,5 +11,18 @@
 	<%= link_to "<button>Create Article</button>".html_safe, new_account_article_path(@account), :id=>"" ,:class=>"buttons" %>	
 	</div>
 
-</body>
+	<p>
+				
+      
+    <% @articles.each do |article| %>
+            <%= article.title %>
+	<% end %>
+	
 
+	
+       
+	 
+	</p>
+
+
+</body>
