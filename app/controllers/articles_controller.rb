@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
         @account_id=params[:account_id]
         @articles= Article.where(account_id: @account_id)
     end
+    
 end
 private
     def article_params
