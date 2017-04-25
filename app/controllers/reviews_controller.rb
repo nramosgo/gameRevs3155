@@ -23,7 +23,8 @@ class ReviewsController < ApplicationController
     
     def show
         @account = Account.find(params[:account_id])
-        @review = Review.where(account_id:'@account.id')
+        @account_id=params[:account_id]
+        @reviews= Review.where(account_id: @account_id)
     end
 end
 

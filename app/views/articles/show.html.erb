@@ -1,17 +1,17 @@
 <% @articles.each do |article| %>
     <% if article.equal?@articles.last %>
-        <p>
+        <h2 class="mid_header">
             <%= article.title %>
-        </p>
+        </h2>
     
         <p>
             <%= image_tag(article.image, size: "300x200") %>
         </p>    
-        <p>
+        <p class="mainText" >
             <%= article.mainText %>
         </p>
     
-        <p>
+        <p class="tags">
             tags: <%= article.tag1 %>, <%= article.tag2 %>, <%= article.tag3 %>
         </p>
     <% end %>
