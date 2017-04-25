@@ -1,9 +1,19 @@
-<h4>Showing Article</h4>
-<p>
-    <strong>Title:</strong>
-        <%= @article.title %>
-</p>
+<% @articles.each do |article| %>
+    <% if article.equal?@articles.last %>
+        <p>
+            <%= article.title %>
+        </p>
+    
+        <p>
+            <%= image_tag(article.image, size: "300x200") %>
+        </p>    
+        <p>
+            <%= article.mainText %>
+        </p>
+    
+        <p>
+            tags: <%= article.tag1 %>, <%= article.tag2 %>, <%= article.tag3 %>
+        </p>
+    <% end %>
+<% end %>
 
-<p>
-
-</p>

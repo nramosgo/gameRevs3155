@@ -19,7 +19,8 @@ class ArticlesController < ApplicationController
     
     def show
         @account = Account.find(params[:account_id])
-        @article = Article.where(account_id:'@account.id')
+        @account_id=params[:account_id]
+        @articles= Article.where(account_id: @account_id)
     end
 end
 private
