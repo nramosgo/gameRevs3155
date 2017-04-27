@@ -1,6 +1,8 @@
 <%= form_for @account do |f| %>
 <h3 class = "mid_header">Choose a username and password</h3>
-
+<% flash.each do |key, value| %>
+    <p class="notice notice-<%= key %>"><%= value %></p>
+<% end %>
 <p>
     <%= f.label :userName %><br>
     <%= f.text_field :userName %>
@@ -12,5 +14,7 @@
 <p>
     <%= f.submit "Login or Create Account"%>
 </p>
+
+
 
 <% end %>

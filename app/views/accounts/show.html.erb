@@ -13,16 +13,26 @@
 
 	<p>
 				
-      
+      My Articles:
     <% @articles.each do |article| %>
             <%= article.title %>
+            <td><%= link_to 'Show', account_article_path(@account.id, @account.articles, article.id) %></td>
+            
 	<% end %>
 	
+	   My Reviews:
+    <% @reviews.each do |review| %>
+            <%= review.title %>
+            <td><%= link_to 'Show', account_review_path(@account.id, @account.reviews, review.id) %></td>
+            
+	<% end %>
 
 	
        
 	 
 	</p>
+
+
 
 
 </body>

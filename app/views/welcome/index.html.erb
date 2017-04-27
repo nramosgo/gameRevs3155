@@ -53,13 +53,57 @@
 	<div class="lists_top" style = "clear:both">
 		<p1 class="list_trending" id = "articles_list" >
 		"Top 5 / Top 10 Articles"
+		<table>
+            	<tr>
+            		<th>Title</th>
+		</tr>
 		
-		
+		 <% @account.each do |account| %>
+            <%  @account_id = account.id %>
+        
+       <% @articles= Article.where(account_id: @account_id) %>
+            
+             <% @articles.each do |article| %>
+             <tr>
+           <td> <%= article.title %> </td>
+            <td><%= link_to 'Show', account_article_path(account.id, account.articles, article.id) %></td>
+            </tr>
+		<% end %>
+          
+            
+		<% end %>
+		 </table> 
 		</p1>
 
 		<p2 class="list_trending" id ="reviews_list" style = "float:left;"  >
 		"Top 5 / Top 10 Reviews"
+		
+			<table>
+            	<tr>
+            		<th>Title</th>
+		</tr>
+		
+		 <% @account.each do |account| %>
+            <%  @account_id = account.id %>
+        
+       <% @review= Review.where(account_id: @account_id) %>
+            
+             <% @review.each do |review| %>
+             <tr>
+           <td> <%= review.title %> </td> 
+           <td> <%= review.rating.to_s %> </td>
+            <td><%= link_to 'Show', account_article_path(account.id, account.reviews, review.id) %></td>
+            </tr>
+		<% end %>
+          
+            
+		<% end %>
+		 </table> 
+		
 		</p2>
+	
+
+		</p1>
 	
 	</div>
 	

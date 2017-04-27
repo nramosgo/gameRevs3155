@@ -7,28 +7,33 @@ class AccountsController < ApplicationController
        
         @account = Account.new(account_params)
         @userName = @account.userName
+        @password = @account.password
         if Account.exists?(userName: @userName)
-            #get existing account from db and redirect
-            print @userName
             @account = Account.where(userName: @userName).take
-            @account_id = @account.id
-         
-            redirect_to account_path(@account_id)
-            #render 'new'
+            
+            if @account.password.eql?(@password)
+                @account_id = @account.id
+                redirect_to account_path(@account_id)
+            else
+                flash[:notice] = "*Incorrect password"
+                redirect_to new_account_path 
+            end
         elsif @account.save
             #creates new record if not existing and redirects
             redirect_to @account
         else
-            render 'new'
+            flash[:notice] = "*Username and/or password too short"
+            redirect_to new_account_path
         end
     
     end
     
     def show
         @account = Account.find(params[:id])
-        @account_id=params[:account_id]
+        @account_id=@account.id
         
         @articles= Article.where(account_id: @account_id)
+        @reviews = Review.where(account_id: @account_id)
        
     end
 end
