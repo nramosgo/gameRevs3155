@@ -1,1 +1,33 @@
-<h4>Showing stuff</h4>
+<body>
+    <% if params[:content].eql?("Reviews") %>
+    <h2>All Reviews</h4>
+    <div>
+        <p>
+            <% @reviews.each do |review| %>
+                <% @account = @accounts.where(id: review.account_id).take %>
+                <p>
+                    <%= link_to review.title, account_review_path(review.account_id, @account.reviews, review.id) %>
+                    <%= image_tag(review.image, size: "50x50") %>
+                    <td class="rating"><%= review.rating.to_s %>/5.0 </td>
+                    Author: <%= @account.userName %>
+                </p>
+            <% end %>
+        </p>
+    </div>
+    <% end %>
+    <% if params[:content].eql?("Articles") %>
+    <h2>All Articles</h2>
+     <div>
+        <p>
+            <% @articles.each do |article| %>
+                <% @account = @accounts.where(id: article.account_id).take %>
+                <p>
+                    <%= link_to article.title, account_article_path(article.account_id, @account.articles, article.id) %>
+                    <%= image_tag(article.image, size: "50x50") %>
+                    Author: <%= @account.userName %>
+                </p>
+            <% end %>
+        </p>
+     </div>
+     <% end %>
+</body>

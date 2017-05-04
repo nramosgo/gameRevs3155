@@ -24,6 +24,15 @@ class ArticlesController < ApplicationController
         
     end
     
+    def destroy
+        @account = Account.find(params[:account_id])
+        @account_id = params[:account_id]
+        @articles= Article.where(account_id: @account_id)
+        @article.destroy
+
+        redirect_to accounts_path
+    end
+    
 end
 private
     def article_params

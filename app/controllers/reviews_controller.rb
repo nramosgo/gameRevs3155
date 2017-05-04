@@ -26,6 +26,15 @@ class ReviewsController < ApplicationController
         @account_id=params[:account_id]
         @reviews= Review.where(account_id: @account_id)
     end
+    
+    def destroy
+        @account = Account.find(params[:account_id])
+        @account_id = params[:account_id]
+        @reviews= Review.where(account_id: @account_id)
+        @review.destroy
+
+        redirect_to accounts_path
+    end
 end
 
 private

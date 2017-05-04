@@ -3,6 +3,12 @@ class AccountsController < ApplicationController
         @account = Account.new
     end
     
+    def index
+        @accounts = Account.all
+        @reviews = Review.all
+        @articles = Article.all
+    end
+    
     def create
        
         @account = Account.new(account_params)

@@ -16,11 +16,11 @@
 	<!-- Wrapper for the headers -->
 	
 	 <div style = "clear:both;">
-		<h2 class="mid_header" style ="float:right; margin-right: 273px;">
+		<h2 class="mid_header" style ="float:right; margin-right: 310px;">
 		Articles
 		</h2>
 	
-		<h3 class="mid_header" style = "float:left; margin-left: 273px;">
+		<h3 class="mid_header" style = "float:left; margin-left: 308px;">
 		Reviews
 		<br/>
 		</h3>
@@ -31,72 +31,78 @@
 	 <div style = "clear:both;">
 		
 		
-		<%= link_to "<button>All Reviews </button>".html_safe, accounts_path, :id=>"allRevButton", :class=>"buttons" %>
+		<%= link_to "<button>All Reviews </button>".html_safe, accounts_path(:content => "Reviews"), :id=>"allRevButton", :class=>"buttons" %>
 		
 		
-		<%= link_to "<button>All Articles </button>".html_safe, accounts_path, :id=>"allArtButton", :class=>"buttons" %>
+		<%= link_to "<button>All Articles </button>".html_safe, accounts_path(:content => "Articles"), :id=>"allArtButton", :class=>"buttons" %>
 		
 		
 	</div>
 	<!--- Wrapper for the list of articles and reviews -->
 	<div class="lists_top" style = "clear:both">
 		<p1 class="list_trending" id = "articles_list" >
-		Top 5 Articles
+		Trending Articles
 		<table>
             	<tr>
             		<th>Title</th>
 		</tr>
-		<% arthash = Hash.new %>
 		
-		 <% @account.each do |account| %>
+		
 		 
-            <%  @account_id = account.id %>
+            
         
         <!---loop through articles to create hash -->
        
-       <% @articles= Article.where(account_id: @account_id) %>
-            
+       
+            <% @articles = Article.order(:created_at) %>
+            <% counter = 0 %>
              <% @articles.each do |article| %>
              <tr>
-             	<% arthash[@article_id] = @article %>
+             	<% if counter < 10 %>
+             	<% @accounts = Account.where(id: article.account_id).take %>
+             
+             	<%  account_id = @accounts.id %>
              	
            <td> <%= article.title %> </td>
-            <td><%= link_to 'Show', account_article_path(account.id, account.articles, article.id) %></td>
+            <td><%= link_to 'Show', account_article_path(account_id, @accounts.articles, article.id) %></td>
+            	<% counter= counter +1 %>
+            	<% else %>
+            	<% break %>
+            	<% end%>
+            
             </tr>
-		<% end %>
-          
-            <!---loop through articles to create hash -->
-            
- 
-            
-            
-		<% end %>
+            <% end%>
+		 
 		 </table> 
 		</p1>
 
 		<p2 class="list_trending" id ="reviews_list" style = "float:left;"  >
-		Top 5 Reviews
+		Trending Reviews
 		
 			<table>
-            	<tr>
+			<tr  >
             		<th>Title</th>
 		</tr>
-		
-		 <% @account.each do |account| %>
-            <%  @account_id = account.id %>
-        
-       <% @review= Review.where(account_id: @account_id) %>
-            
-             <% @review.each do |review| %>
+            	<tr>
+            		 <% @reviews = Review.order(:created_at) %>
+            <% counter = 0 %>
+             <% @reviews.each do |review| %>
              <tr>
-           <td> <%= review.title %> </td> 
-           <td> <%= review.rating.to_s %> </td>
-            <td><%= link_to 'Show', account_article_path(account.id, account.reviews, review.id) %></td>
-            </tr>
-		<% end %>
-          
+             	<% if counter < 10 %>
+             	<% @accounts = Account.where(id: review.account_id).take %>
+             
+             	<%  account_id = @accounts.id %>
+             	
+           <td> <%= review.title %> </td>
+            <td><%= link_to 'Show', account_review_path(account_id, @accounts.reviews, review.id) %></td>
+            	<% counter= counter +1 %>
+            	<% else %>
+            	<% break %>
+            	<% end%>
             
-		<% end %>
+            </tr>
+            <% end%>
+
 		 </table> 
 		
 		</p2>
