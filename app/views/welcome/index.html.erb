@@ -31,52 +31,51 @@
 	 <div style = "clear:both;">
 		
 		
-		<button class="buttons" style = "float:left; margin-left: 250px;"
-		type="button">All Reviews
-		</button>
+		<%= link_to "<button>All Reviews </button>".html_safe, accounts_path, :id=>"allRevButton", :class=>"buttons" %>
 		
-		<!--<button class="buttons" style = "float:left; margin-left: 15px;"
-		type="button">New
-		</button> 
 		
-		<button class="buttons" style = "float:right; margin-right: 175px;" 
-		type="button">New
-		</button> -->
-		
-		<button class="buttons" style = "float:right; margin-right: 250px;"
-		type="button">All Articles
-		</button>
+		<%= link_to "<button>All Articles </button>".html_safe, accounts_path, :id=>"allArtButton", :class=>"buttons" %>
 		
 		
 	</div>
 	<!--- Wrapper for the list of articles and reviews -->
 	<div class="lists_top" style = "clear:both">
 		<p1 class="list_trending" id = "articles_list" >
-		"Top 5 / Top 10 Articles"
+		Top 5 Articles
 		<table>
             	<tr>
             		<th>Title</th>
 		</tr>
+		<% arthash = Hash.new %>
 		
 		 <% @account.each do |account| %>
+		 
             <%  @account_id = account.id %>
         
+        <!---loop through articles to create hash -->
+       
        <% @articles= Article.where(account_id: @account_id) %>
             
              <% @articles.each do |article| %>
              <tr>
+             	<% arthash[@article_id] = @article %>
+             	
            <td> <%= article.title %> </td>
             <td><%= link_to 'Show', account_article_path(account.id, account.articles, article.id) %></td>
             </tr>
 		<% end %>
           
+            <!---loop through articles to create hash -->
+            
+ 
+            
             
 		<% end %>
 		 </table> 
 		</p1>
 
 		<p2 class="list_trending" id ="reviews_list" style = "float:left;"  >
-		"Top 5 / Top 10 Reviews"
+		Top 5 Reviews
 		
 			<table>
             	<tr>

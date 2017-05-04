@@ -69,7 +69,7 @@
     border-radius: 8px;
     background-color: #85c1e9;
     width: 45%;
-    height: 300px;
+    height: 30%;
 }
 body {
     background: #062362;
@@ -104,5 +104,12 @@ body {
      color: #ffff00;
      font-size: 20px;
  }
-
+ #allRevButton {
+      float:left; 
+      margin-left: 20%;
+ }
+ #allArtButton {
+     float:right;
+     margin-right: 20%;
+ }
 
