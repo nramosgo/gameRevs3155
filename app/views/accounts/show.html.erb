@@ -1,37 +1,38 @@
-<h1>Name of user</h1>
+<h1 id="userHeader"> User: <%= @account.userName %> </h1>
 
 <body>
      <div>
 	
-	<%= link_to "<button>Create Review</button>".html_safe, new_account_review_path(@account), :id=>"" ,:class=>"buttons" %>	
+	<%= link_to "<button>Create Review</button>".html_safe, new_account_review_path(@account), :id=>"acctRev" ,:class=>"buttons" %>
+	<%= link_to "<button>Create Article</button>".html_safe, new_account_article_path(@account), :id=>"acctArt" ,:class=>"buttons" %>
 	</div>
 
-    <div>
-	
-	<%= link_to "<button>Create Article</button>".html_safe, new_account_article_path(@account), :id=>"" ,:class=>"buttons" %>	
-	</div>
-
-	<p>
-				
-      My Articles:
-    <% @articles.each do |article| %>
-            <%= article.title %>
-            <td><%= link_to 'Show', account_article_path(@account.id, @account.articles, article.id) %></td>
-            
-	<% end %>
-	
-	   My Reviews:
+	<p id="revP">
+	   <h2>My Reviews </h2>
     <% @reviews.each do |review| %>
-            <%= review.title %>
-            <td><%= link_to 'Show', account_review_path(@account.id, @account.reviews, review.id) %></td>
+            <p>
+            <td><%= link_to review.title, account_review_path(@account.id, @account.reviews, review.id) %></td>
+            <%= image_tag(review.image, size: "50x50") %>
+            <td class="rating"><%= review.rating.to_s %>/5.0 </td>
+            </p>
+	<% end %>
+	</p>
+	
+	<p id="artP">
+				
+      <h2>My Articles </h2>
+    <% @articles.each do |article| %>
+            <p>
+            <td><%= link_to article.title, account_article_path(@account.id, @account.articles, article.id) %></td>
+            <%= image_tag(article.image, size: "50x50") %>
+            </p>
             
 	<% end %>
-
-	
-       
-	 
 	</p>
-
+	
+    <p id="buttonP">
+	    <%= link_to "<button>Logout</button>".html_safe, welcome_index_path , :id=>"", :class=>"buttons" %>
+	</p>
 
 
 
