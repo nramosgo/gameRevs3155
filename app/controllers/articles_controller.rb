@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
         #just for reference as what to do @comment = @article.comments.create(comment_params)
        
         if @article.save
-            redirect_to account_article_path(@account.id, @account.articles, @article.id)
+            redirect_to account_article_path(@account.id, @account.articles, @article.id, id: @article.id)
             
         else
             render 'new'
@@ -21,6 +21,7 @@ class ArticlesController < ApplicationController
         @account = Account.find(params[:account_id])
         @account_id = params[:account_id]
         @articles= Article.where(account_id: @account_id)
+        @article = Article.find(params[:id])
         
     end
     

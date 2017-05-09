@@ -48,14 +48,9 @@
             		<th>Title</th>
 		</tr>
 		
-		
-		 
+             
+        	<% @articles = Article.order('created_at DESC') %>    
             
-        
-        <!---loop through articles to create hash -->
-       
-       
-            <% @articles = Article.order(:created_at) %>
             <% counter = 0 %>
              <% @articles.each do |article| %>
              <tr>
@@ -65,7 +60,7 @@
              	<%  account_id = @accounts.id %>
              	
            <td> <%= article.title %> </td>
-            <td><%= link_to 'Show', account_article_path(account_id, @accounts.articles, article.id) %></td>
+            <td><%= link_to 'Show', account_article_path(account_id, @accounts.articles, article.id, id: article.id) %></td>
             	<% counter= counter +1 %>
             	<% else %>
             	<% break %>
@@ -85,7 +80,9 @@
             		<th>Title</th>
 		</tr>
             	<tr>
-            		 <% @reviews = Review.order(:created_at) %>
+            		<% @reviews = Review.order('created_at DESC') %>
+            		
+            		
             <% counter = 0 %>
              <% @reviews.each do |review| %>
              <tr>
@@ -95,7 +92,7 @@
              	<%  account_id = @accounts.id %>
              	
            <td> <%= review.title %> </td>
-            <td><%= link_to 'Show', account_review_path(account_id, @accounts.reviews, review.id) %></td>
+            <td><%= link_to 'Show',  account_review_path(@accounts.id, @accounts.reviews, review.id, id: review.id) %></td>
             	<% counter= counter +1 %>
             	<% else %>
             	<% break %>

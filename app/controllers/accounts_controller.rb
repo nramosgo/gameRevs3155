@@ -40,6 +40,7 @@ class AccountsController < ApplicationController
         
         @articles= Article.where(account_id: @account_id)
         @reviews = Review.where(account_id: @account_id)
+        
        
     end
 end

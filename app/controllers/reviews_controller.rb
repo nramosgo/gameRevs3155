@@ -10,9 +10,10 @@ class ReviewsController < ApplicationController
         @review = @account.reviews.new(review_params)
         
         if @review.save
-                
-            redirect_to account_review_path(@account.id, @account.reviews, @review.id)
-             
+            
+            puts @review.id    
+            redirect_to account_review_path(@account.id, @account.reviews, @review.id, id: @review.id)
+            
              #change to show page
         else
              render 'new'
@@ -25,9 +26,12 @@ class ReviewsController < ApplicationController
         @account = Account.find(params[:account_id])
         @account_id=params[:account_id]
         @reviews= Review.where(account_id: @account_id)
+        @review = Review.find(params[:id])
+       
     end
     
     def destroy
+        
         @account = Account.find(params[:account_id])
         @account_id = params[:account_id]
         @reviews= Review.where(account_id: @account_id)

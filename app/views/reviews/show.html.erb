@@ -1,5 +1,5 @@
-<% @reviews.each do |review| %>
-    <% if review.equal?@reviews.last %>
+<%review = @review %>
+    
         <h2 class="mid_header">
             <%= review.title %>
         </h2>
@@ -17,5 +17,5 @@
         <p class="tags">
             tags: <%= review.tag1 %>, <%= review.tag2 %>, <%= review.tag3 %>
         </p>
-    <% end %>
-<% end %>
+    
+
