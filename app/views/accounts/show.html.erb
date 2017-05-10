@@ -11,7 +11,7 @@
 	   <h2>My Reviews </h2>
     <% @reviews.each do |review| %>
             <p>
-            <td><%= link_to review.title, account_review_path(@account.id, @account.reviews, review.id) %></td>
+            <td><%= link_to review.title, account_review_path(@account.id, @account.reviews,id: review.id) %></td>
             <%= image_tag(review.image, size: "50x50") %>
             <td class="rating"><%= review.rating.to_s %>/5.0 </td>
             </p>
@@ -23,7 +23,7 @@
       <h2>My Articles </h2>
     <% @articles.each do |article| %>
             <p>
-            <td><%= link_to article.title, account_article_path(@account.id, @account.articles, article.id) %></td>
+            <td><%= link_to article.title, account_article_path(@account.id, @account.articles,id: article.id) %></td>
             <%= image_tag(article.image, size: "50x50") %>
             </p>
             
